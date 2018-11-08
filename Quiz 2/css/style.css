@@ -1,0 +1,11 @@
+#main {
+    margin: auto;
+    max-width: 400px;
+}
+
+
+.pet {
+    border: 3px dashed #fa0145;
+    border-radius: 10px;
+    box-shadow: 10px 7px 7px 10px #b4b9bd;
+}
