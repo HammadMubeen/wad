@@ -9,14 +9,16 @@ function add() {
     todos.push(task);
     document.getElementById('todos').innerText = todos;
 }*/
-
+/*Observation:
+           It is displaying(adding) the data i have wrote in the todolist input(id=task) to todo id by
+             seperation of ,between each other.*/
 
 //============================================
 //-----------  STEP - 2 ----------------------
 //============================================
 
-
-/*var todos = [];
+/*
+var todos = [];
 function add() {
     var task = document.getElementById('task').value;
     todos.push(task);
@@ -36,14 +38,17 @@ function show() {
     document.getElementById('todos').appendChild(ul);
 }*/
 
-
+/*Observation:
+                When i click on add button the text i entered in totdolist input vanished
+                and displayed in todoid ,if i enter text again and click add button then my previous and current entry
+                (which is saved in todo2darray)  is displayed.*/
 //============================================
 //-----------  STEP - 3 ----------------------
 //============================================
 
 
-/*
-function getTodos() {
+
+/*function getTodos() {
     var todos = [];
     var todos_str = localStorage.getItem('todo');
     if(todos_str !== null)
@@ -53,7 +58,8 @@ function getTodos() {
 
 function add() {
     var task = document.getElementById('task').value;
-    if(task.trim() == ''){
+    if(task.trim() == '')
+    {
         document.getElementById('message').style.display = 'block';
         return false;
     } else {
@@ -83,8 +89,12 @@ function show() {
     }
     document.getElementById('todos').appendChild(ul);
 }
-show();
-*/
+show();*/
+/*Observation:
+               When i click on add button the text i entered in totdolist input vanished and displayed in todoid
+               and also a delete button comes to delete the data i entered but it is not deleting the data.
+               If i enter text again and click add button then only my current entry
+                is display along with a delete button.*/
 
 
 
@@ -93,7 +103,7 @@ show();
 //============================================
 
 
-/*function getTodos() {
+function getTodos() {
     var todos = [];
     var todos_str = localStorage.getItem('todo');
     if(todos_str !== null)
@@ -162,9 +172,13 @@ function isDone(e) {
     localStorage.setItem('todo',JSON.stringify(todos));
     show();
 }
-show();*/
+show();
 
-
+/*Observation:
+               When i click on add button the text i entered in totdolist input vanished and displayed in todoid
+               and also a delete button comes to delete the data i entered and now by clicking it data is deleted.
+               If i enter text again and click add button then only my current entry
+                is display along with a delete button to delete it.*/
 
 
 
