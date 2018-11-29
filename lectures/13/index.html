@@ -9,10 +9,28 @@
     <div class="quiz-wrapper">
         <h1>Choose the correct answer</h1>
         <div id="question"></div>
-        <ul id="choice-list"></ul>
+        <form name="QUIZ">
+            <input type="radio"  id="radio0" name="choice" value="0" checked>
+            &nbsp
+            <i id="choice1"></i>
+            <br>
+            <input type="radio" id="radio1" name="choice" value="1">
+            &nbsp
+            <i id="choice2"></i>
+            <br>
+            <input type="radio" id="radio2" name="choice" value="2">
+            &nbsp
+            <i id="choice3"></i>
+            <br>
+            <input type="radio" id="radio3" name="choice" value="3">
+            &nbsp
+            <i id="choice4"></i>
+            <br>
+        </form>
         <div id="quiz-message"></div>
         <div id="result"></div>
-        <button id="next-btn" onclick="displayNext()">Next Question</button>
+        <button id="next-btn1" onclick="displayNext()">Next Question</button>
+        <button id="next-btn2" onclick="resetQuiz()">Reset Quiz</button>
     </div>
 <script src="js/script.js"></script>
 </body>
