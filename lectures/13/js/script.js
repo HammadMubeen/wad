@@ -1,111 +1,73 @@
-var questions = [{
-    question : "When a user views a page containing a JavaScript program, which machine actually executes the script?",
-    choices : [ "The User's machine running a Web browser",
-        "The Web server",
-        "A central machine deep within Netscape's corporate offices",
-        "None of the above"],
-    correctAnswer : 0
-},{
-    question : "Which of the following can't be done with client-side JavaScript?",
-    choices : [ "Validating a form",
-        "Sending a form's contents by email",
-        "Storing the form's contents to a database file on the server",
-        "None of the above"],
-    correctAnswer : 2
-},{
-    question : "Using _______ statement is how you test for a specific condition",
-    choices : [ "select",
-        "if",
-        "for",
-        "none of the above"],
-    correctAnswer : 1
-},{
-    question : "In our Html file, where we should include our javascript file to work properly?",
-    choices : [ "In head",
-        "In title",
-        "At the beginning of body",
-        "Just before ending body"],
-    correctAnswer : 3
-},{
-    question : "What is the name of pakistan's international t20 cricket captain?",
-    choices : [ "Shahid afridi",
-        "Shoaib Malik",
-        "Sarfraz Ahmed",
-        "Muhammad Hafeez"],
-    correctAnswer : 2
-}];
+var QUESTIONS=
+    [{
+        question : "Earth is round or oval?",
+        choice: ["round","oval","you dont know","none of above"],
+        answer: 0
+    },
+        {
+            question : "Who is Bruce Lee?",
+            choice: ["Singer","Dancer","Fighter","none of above"],
+            answer: 2
+        },
+        {
+            question : "Who is the King of jungle?",
+            choice: ["Dog","Wolf","Elephant","Loin"],
+            answer: 3
+        }];
 
-var currentQuestion = 0;
-var correctAnswers = 0;
-var quizOver = false;
-
-displayCurrentQuestion();
-document.getElementById("quiz-message").innerText=none;
-
-function displayNext()
+var currentquestion=0;
+var correctanswer=0;
+currentQuestion();
+document.getElementById("quiz-message").style.display="none";
+function currentQuestion()
 {
-    //Checking the answer
-    var ANSWER=document.QUIZ.choice.value;
-
-    if(ANSWER==questions[currentQuestion].correctAnswer)
+    var ID=document.getElementById("question");
+    ID.innerHTML=QUESTIONS[currentquestion].question;
+    var text="";
+    for(var i=0;i<QUESTIONS[currentquestion].choice.length;i++)
     {
-        correctAnswers++;
+        text+="<input type='radio' name='RADIO' value='"+i+"'>" +QUESTIONS[currentquestion].choice[i] + "<br>";
     }
-    //document.getElementById("quiz-message").innerHTML = "Must select an Option";
-    //document.getElementById("quiz-message").innerText=block;
-
-    //Displaying result at the end
-    if(currentQuestion==4)
-    {
-        displayScore();
-    }
-    //for next question
-currentQuestion++;
-
-    //for calling next question till end of Quiz
-    if(currentQuestion<5)
-    {
-        displayCurrentQuestion();
-    }
-    if(currentQuestion==5)
-    {
-        var message;
-        alert('Your Quiz has been Completed \n Calculating your Marks...:)');
-    }
-
+    document.getElementById("choice-list").innerHTML="<li>"+text+"</li>";
 }
-
-function displayCurrentQuestion()
+function nextquestion()
 {
-
-    document.getElementById("question").innerHTML = questions[currentQuestion].question;
-    document.getElementById("choice1").innerText = questions[currentQuestion].choices[0];
-    document.getElementById("choice2").innerText = questions[currentQuestion].choices[1];
-    document.getElementById("choice3").innerText = questions[currentQuestion].choices[2];
-    document.getElementById("choice4").innerText = questions[currentQuestion].choices[3];
-}
-function resetQuiz()
-{
-    if(currentQuestion==5)
+    var selectedvalue=document.querySelector('input[name="RADIO"]:checked');
+    if(selectedvalue==null)
     {
-        alert('You have Finished the Quiz and got your result \n Resetting the Quiz....:)');
-        currentQuestion = 0;
-        correctAnswers = 0;
-        hideScore();
-        displayCurrentQuestion();
+        document.getElementById("quiz-message").innerText="Please Enter An Option";
+        document.getElementById("quiz-message").style.display="block";
+    }
+    else {
+        document.getElementById("quiz-message").style.display="none";
+        selectedvalue=document.querySelector('input[name="RADIO"]:checked').value;
+        if(selectedvalue==QUESTIONS[currentquestion].answer)
+        {
+            correctanswer++;
+        }
+        currentquestion++;
+    }
+
+
+    if(currentquestion<QUESTIONS.length)
+    {
+        currentQuestion();
     }
     else
     {
-        alert('Error:You have started attempting the Quiz \n FINISH THE QUIZ FIRST :) ');
+        displayscore();
     }
-
 }
-function displayScore()
+function displayscore()
 {
-    document.getElementById("result").innerHTML = "you scored: " + correctAnswers + " out of: " + questions.length;
-    document.getElementById("result").style.display = 'block';
+    document.getElementById("result").innerHTML="Your score is = " + correctanswer;
+    document.getElementById("result").style.display="block";
 }
-function hideScore()
+function reset()
 {
-    document.getElementById("result").style.display = 'none';
+    correctanswer=0;
+    currentquestion=0;
+    document.getElementById("quiz-message").style.display="none";
+    document.getElementById("result").style.display="none";
+    currentQuestion();
 }
